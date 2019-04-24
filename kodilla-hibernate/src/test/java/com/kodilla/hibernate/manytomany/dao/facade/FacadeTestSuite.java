@@ -69,13 +69,13 @@ public class FacadeTestSuite {
 
     @Test
     public void testFindCompanyByTextFragment(){
-        List<Company> temporaryList = facade.findCompanyByTextFragment("%Data%");
+        List<Company> temporaryList = facade.findCompanyByTextFragment("Data");
         Assert.assertEquals(2, temporaryList.size());
     }
 
     @Test
     public void testFindEmployeeByTextFragment(){
-        List<Employee> temporaryList = facade.findEmployeeByTextFragment("%Smith%");
+        List<Employee> temporaryList = facade.findEmployeeByTextFragment("Smith");
         Assert.assertEquals(2, temporaryList.size());
     }
 
