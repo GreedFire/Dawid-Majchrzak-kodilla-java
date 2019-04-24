@@ -1,7 +1,9 @@
 package com.kodilla.hibernate.manytomany.dao.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
+import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.facade.Facade;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,14 @@ public class FacadeTestSuite {
 
         List<Company> temporaryList = facade.findCompanyByTextFragment("Data");
 
-        System.out.println(temporaryList.size());
-        //System.out.println(temporaryList.get(0).getName());
+        Assert.assertEquals(2, temporaryList.size());
 
+    }
 
+    @Test
+    public void testFindEmployeeByTextFragment(){
+        List<Employee> temporaryList = facade.findEmployeeByTextFragment("Smith");
 
-
+        Assert.assertEquals(2, temporaryList.size());
     }
 }
