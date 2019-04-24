@@ -36,14 +36,6 @@ public class Facade {
         return result;
     }
 
-    public CompanyDao getCompanyDao() {
-        return companyDao;
-    }
-
-    public EmployeeDao getEmployeeDao() {
-        return employeeDao;
-    }
-
 
 
 

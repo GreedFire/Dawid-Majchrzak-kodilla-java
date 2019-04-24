@@ -2,6 +2,8 @@ package com.kodilla.hibernate.manytomany.dao.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.dao.CompanyDao;
+import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import com.kodilla.hibernate.manytomany.facade.Facade;
 import org.junit.After;
 import org.junit.Assert;
@@ -20,6 +22,12 @@ import java.util.List;
 public class FacadeTestSuite {
 
     @Autowired
+    private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @Autowired
     private Facade facade;
 
     private List<Integer> employeeId = new ArrayList<>();
@@ -36,24 +44,24 @@ public class FacadeTestSuite {
         Employee edwardSmith = new Employee("Edward", "Smith");
 
         //When
-        facade.getEmployeeDao().save(edwardSmith);
+        employeeDao.save(edwardSmith);
         employeeId.add(edwardSmith.getId());
-        facade.getEmployeeDao().save(johnSmith);
+        employeeDao.save(johnSmith);
         employeeId.add(johnSmith.getId());
 
-        facade.getCompanyDao().save(softwareMachine);
+        companyDao.save(softwareMachine);
         companyId.add(softwareMachine.getId());
-        facade.getCompanyDao().save(dataMaesters);
+        companyDao.save(dataMaesters);
         companyId.add(dataMaesters.getId());
     }
 
     @After
     public void cleanUpData(){
         for(Integer integer : companyId)
-            facade.getCompanyDao().deleteById(integer);
+            companyDao.deleteById(integer);
 
         for(Integer integer : employeeId)
-            facade.getEmployeeDao().deleteById(integer);
+            employeeDao.deleteById(integer);
 
         companyId.clear();
         employeeId.clear();
